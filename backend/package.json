@@ -4,8 +4,12 @@
   "description": "Social network for developers",
   "main": "index.js",
   "scripts": {
+    "client-install": "npm start --prefix client",
     "start": "node server.js",
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "client1": "npm start --prefix client",
+    "client": "cd .. && cd client && npm start",
+    "dev": "concurrently --kill-others \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -20,6 +24,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "concurrently": "^4.1.1",
     "express": "^4.17.1",
     "gravatar": "^1.8.0",
     "jsonwebtoken": "^8.5.1",

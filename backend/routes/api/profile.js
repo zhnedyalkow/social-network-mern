@@ -1,8 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const passport = require('passport');
 const router = express.Router();
-const mongoose = require('mongoose');
 const passport = require('passport');
 
 mongoose.set('useFindAndModify', false);
@@ -28,7 +26,7 @@ router.get('/handle/:handle', (req, res) => {
 	Profile.findOne({
 			handle: req.params.handle
 		})
-		.populate('user', ['name, avatar'])
+		.populate('user', ['name', 'avatar'])
 		.then(profile => {
 			if (!profile) {
 				errors.noprofile = 'There is no profile for this user';
@@ -51,7 +49,7 @@ router.get('/user/:user_id', (req, res) => {
 	Profile.findOne({
 			user: req.params.user_id
 		})
-		.populate('user', ['name, avatar'])
+		.populate('user', ['name', 'avatar'])
 		.then(profile => {
 			if (!profile) {
 				errors.noprofile = 'There is no profile for this user';
@@ -72,7 +70,7 @@ router.get('/all', (req, res) => {
 	const errors = {};
 
 	Profile.find()
-		.populate('user', ['name, avatar'])
+		.populate('user', ['name', 'avatar'])
 		.then(profiles => {
 			if (!profiles) {
 				errors.noprofile = 'There are no profiles';
