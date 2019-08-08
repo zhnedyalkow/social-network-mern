@@ -9,7 +9,7 @@
     "server": "nodemon server.js",
     "client1": "npm start --prefix client",
     "client": "cd .. && cd client && npm start",
-    "dev": "concurrently --kill-others \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
